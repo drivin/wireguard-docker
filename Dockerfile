@@ -1,4 +1,4 @@
-FFROM balenalib/raspberry-pi-debian:buster
+FROM balenalib/raspberry-pi-debian:buster
 
 
 # Add debian unstable repo for wireguard packages
