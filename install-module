@@ -1,4 +1,5 @@
 #!/bin/bash
 
+uname -r
 apt update
-apt install -y linux-headers-cloud-amd64 linux-headers-amd64 wireguard-dkms
+apt-get install -y git bc bison flex libssl-dev wget libncurses5-dev libelf-dev libmnl-dev build-essential wireguard-dkms raspberrypi-kernel-headers
