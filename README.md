@@ -11,7 +11,7 @@ In my use case, I'm running the wireguard docker image on a free-tier Google Clo
 ### First Run
 If the wireguard kernel module is not already installed on the __host__ system, use this first run command to install it:
 ```
-docker run -it --rm --cap-add sys_module -v /lib/modules:/lib/modules cmulk/wireguard-docker:buster install-module
+docker run -it --rm --cap-add sys_module -v /lib/modules:/lib/modules jhai/wireguard-raspbian:buster install-module
 ```
 
 ### Normal Run
@@ -20,12 +20,12 @@ docker run --cap-add net_admin --cap-add sys_module -v <config volume or host di
 ```
 Example:
 ```
-docker run --cap-add net_admin --cap-add sys_module -v wireguard_conf:/etc/wireguard -p 5555:5555/udp cmulk/wireguard-docker:buster
+docker run --cap-add net_admin --cap-add sys_module -v wireguard_conf:/etc/wireguard -p 5555:5555/udp jhai/wireguard-raspbian:buster
 ```
 ### Generate Keys
 This shortcut can be used to generate and display public/private key pairs to use for the server or clients
 ```
-docker run -it --rm cmulk/wireguard-docker:buster genkeys
+docker run -it --rm jhai/wireguard-raspbian:buster genkeys
 ```
 
 ## Configuration
@@ -64,7 +64,7 @@ Sample docker-compose.yml
 version: "2"
 services:
  vpn:
-  image: cmulk/wireguard-docker:buster
+  image: jhai/wireguard-raspbian:buster
   volumes:
    - data:/etc/wireguard
   networks:
@@ -86,7 +86,7 @@ volumes:
 ## Build
 Since the images are already on Docker Hub, you only need to do this if you want to change something
 ```
-git clone https://github.com/cmulk/wireguard-docker.git
+git clone https://github.com/drivin/wireguard-raspbian.git
 cd wireguard-docker
 git checkout stretch 
 ##OR##
