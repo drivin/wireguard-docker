@@ -1,8 +1,12 @@
-FROM debian:stretch
+FROM balenalib/raspberry-pi-debian:stretch
+
 
 # Add debian unstable repo for wireguard packages
 RUN echo "deb http://deb.debian.org/debian/ unstable main" > /etc/apt/sources.list.d/unstable-wireguard.list && \
  printf 'Package: *\nPin: release a=unstable\nPin-Priority: 90\n' > /etc/apt/preferences.d/limit-unstable
+
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
+
 
 # Install wireguard packges
 RUN apt update && \
